@@ -1,5 +1,7 @@
+package Teatrograma;
+
 /**
- * Clase Obra: Define cada una de las obras que se representan en el teatro actualmente
+ * Clase Teatrograma.Obra: Define cada una de las obras que se representan en el teatro actualmente
  */
 public class Obra {
     // Atributos
@@ -24,10 +26,16 @@ public class Obra {
      */
     private String mayorEdad;
 
+    // Constructor vacío
+
+    public Obra() {
+
+    }
+
     // Constructores sobrecargados
 
     /**
-     * Permite crear un objeto de la clase Obra con 4 argumentos
+     * Permite crear un objeto de la clase Teatrograma.Obra con 4 argumentos
      * @param titulo cadena de caracteres con el título de una obra
      * @param duracion entero que define la duración de una obra (en minutos)
      * @param autor cadena de caracteres con el nombre del autor de la obra
@@ -41,7 +49,7 @@ public class Obra {
     }
 
     /**
-     * Permite crear un objeto de la clase Obra con 3 argumentos
+     * Permite crear un objeto de la clase Teatrograma.Obra con 3 argumentos
      * @param titulo cadena de caracteres con el título de una obra
      * @param duracion entero que define la duración de una obra (en minutos)
      * @param autor cadena de caracteres con el nombre del autor de la obra
@@ -54,7 +62,7 @@ public class Obra {
     }
 
     /**
-     * Permite crear un objeto de la clase Obra con 2 argumentos
+     * Permite crear un objeto de la clase Teatrograma.Obra con 2 argumentos
      * @param titulo cadena de caracteres con el título de una obra
      * @param duracion entero que define la duración de una obra (en minutos)
      */

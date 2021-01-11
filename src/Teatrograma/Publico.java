@@ -1,5 +1,7 @@
+package Teatrograma;
+
 /**
- * Clase Publico: Representa cada uno de los clientes que tiene el teatro
+ * Clase Teatrograma.Publico: Representa cada uno de los clientes que tiene el teatro
  */
 public class Publico {
 
@@ -20,10 +22,16 @@ public class Publico {
      */
     private int dinero;
 
+
+    // Constructor vacío
+
+    public Publico() {
+    }
+
     // Constructores sobrecargados
 
     /**
-     * Permite crear un objeto de la clase Publico con 3 argumentos
+     * Permite crear un objeto de la clase Teatrograma.Publico con 3 argumentos
      * @param nombre cadena de caracteres que define el nombre de una persona
      * @param edad entero que define la edad de una persona
      * @param dinero entero que define el dinero que tiene una persona
@@ -35,7 +43,7 @@ public class Publico {
     }
 
     /**
-     * Permite crear un objeto de la clase Publico con 2 argumentos
+     * Permite crear un objeto de la clase Teatrograma.Publico con 2 argumentos
      * @param edad entero que define el nombre de una persona
      * @param dinero entero que define el dinero que tiene una persona
      */
@@ -46,7 +54,7 @@ public class Publico {
     }
 
     /**
-     * Permite crear un objeto de la clase Publico con 1 argumento
+     * Permite crear un objeto de la clase Teatrograma.Publico con 1 argumento
      * @param dinero entero que define el dinero que tiene una persona
      */
     public Publico(int dinero) {
@@ -105,6 +113,7 @@ public class Publico {
         this.dinero = dinero;
     }
 
+
     // Método toString
 
     /**
@@ -131,7 +140,7 @@ public class Publico {
 
     /**
      * Permite conocer si una persona es mayor de edad
-     * @param persona Objeto de la clase Publico
+     * @param persona Objeto de la clase Teatrograma.Publico
      * @return devuelve TRUE si la persona es mayor de edad y FALSE si no lo es
      */
     public boolean mayorEdad(Publico persona) {

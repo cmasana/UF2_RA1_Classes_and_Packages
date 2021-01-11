@@ -1,5 +1,7 @@
+package Teatrograma;
+
 /**
- * Clase Asiento: Representa las butacas que tiene el teatro
+ * Clase Teatrograma.Asiento: Representa las butacas que tiene el teatro
  */
 public class Asiento {
     // Atributos
@@ -19,13 +21,19 @@ public class Asiento {
      */
     private Publico persona;
 
+    // Constructor vacío
+
+    public Asiento() {
+
+    }
+
     // Constructores sobrecargados
 
     /**
-     * Permite crear un objeto de la clase Asiento con 3 argumentos
+     * Permite crear un objeto de la clase Teatrograma.Asiento con 3 argumentos
      * @param fila entero que representa la fila de una butaca
      * @param numero entero que representa la ubicación de una butaca
-     * @param persona objeto de tipo Publico con los datos de una persona
+     * @param persona objeto de tipo Teatrograma.Publico con los datos de una persona
      */
     public Asiento(int fila, int numero, Publico persona) {
         this.fila = fila;
@@ -34,7 +42,7 @@ public class Asiento {
     }
 
     /**
-     * Permite crear un objeto de la clase Asiento con 2 argumentos
+     * Permite crear un objeto de la clase Teatrograma.Asiento con 2 argumentos
      * @param fila entero que representa la fila de una butaca
      * @param numero entero que representa la ubicación de una butaca
      */
@@ -80,7 +88,7 @@ public class Asiento {
 
     /**
      * Permite obtener los datos de la persona que ocupa una butaca
-     * @return objeto de la clase Publico con los datos de una persona
+     * @return objeto de la clase Teatrograma.Publico con los datos de una persona
      */
     public Publico getPersona() {
         return persona;
@@ -88,7 +96,7 @@ public class Asiento {
 
     /**
      * Permite asignar los datos de una persona a una butaca
-     * @param persona objeto de la clase Publico con los datos de una persona
+     * @param persona objeto de la clase Teatrograma.Publico con los datos de una persona
      */
     public void setPersona(Publico persona) {
         this.persona = persona;
@@ -111,7 +119,7 @@ public class Asiento {
 
     /**
      * Permite conocer el estado de una butaca
-     * @param butaca objeto de la clase Asiento con los datos de una determinada butaca
+     * @param butaca objeto de la clase Teatrograma.Asiento con los datos de una determinada butaca
      * @return devuelve TRUE si la butaca está ocupada y FALSE si no lo está
      */
     public boolean estaOcupado(Asiento butaca) {
