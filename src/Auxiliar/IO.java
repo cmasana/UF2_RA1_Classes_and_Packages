@@ -31,7 +31,7 @@ public class IO {
 
     /**
      * Permite al usuario introducir un número entero desde consola
-     *
+     * @param mensaje Cadena de caracteres con un mensaje que se muestra por pantalla
      * @return un numero entero
      */
     public static int enterInt(String mensaje) {
@@ -52,8 +52,8 @@ public class IO {
 
     /**
      * Permite al usuario introducir un String desde consola
-     *
-     * @return una cadena de caracteres
+     * @param mensaje Cadena de caracteres con un mensaje que se muestra por pantalla
+     * @return devuelve la cadena de caracteres introducida por el usuario
      */
     public static String enterString(String mensaje) {
         Scanner consola = new Scanner(System.in);
@@ -66,6 +66,27 @@ public class IO {
         } while (texto.isEmpty());
 
         return texto;
+    }
+
+    /**
+     * Permite al usuario introducir un String desde consola
+     * @param mensaje Cadena de caracteres con un mensaje que se muestra por pantalla
+     * @return devuelve un valor boolean TRUE si el usuario introduce si, FALSE para el resto de casos
+     */
+    public static boolean enterBoolean(String mensaje) {
+        Scanner consola = new Scanner(System.in);
+        String texto;
+
+        System.out.println(mensaje);
+
+        do {
+            texto = consola.nextLine().toLowerCase();
+        } while (texto.isEmpty());
+
+        if (texto.equals("si")) {
+            return true;
+        }
+        return false;
     }
 
 

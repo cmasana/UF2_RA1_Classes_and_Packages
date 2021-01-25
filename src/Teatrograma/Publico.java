@@ -1,7 +1,7 @@
 package Teatrograma;
 
 /**
- * Clase Teatrograma.Publico: Representa cada uno de los clientes que tiene el teatro
+ * Clase Publico: Representa cada uno de los clientes que tiene el teatro
  */
 public class Publico {
 
@@ -26,12 +26,13 @@ public class Publico {
     // Constructor vacío
 
     public Publico() {
+
     }
 
     // Constructores sobrecargados
 
     /**
-     * Permite crear un objeto de la clase Teatrograma.Publico con 3 argumentos
+     * Permite crear un objeto de la clase Publico con 3 argumentos
      * @param nombre cadena de caracteres que define el nombre de una persona
      * @param edad entero que define la edad de una persona
      * @param dinero entero que define el dinero que tiene una persona
@@ -43,7 +44,7 @@ public class Publico {
     }
 
     /**
-     * Permite crear un objeto de la clase Teatrograma.Publico con 2 argumentos
+     * Permite crear un objeto de la clase Publico con 2 argumentos
      * @param edad entero que define el nombre de una persona
      * @param dinero entero que define el dinero que tiene una persona
      */
@@ -54,7 +55,7 @@ public class Publico {
     }
 
     /**
-     * Permite crear un objeto de la clase Teatrograma.Publico con 1 argumento
+     * Permite crear un objeto de la clase Publico con 1 argumento
      * @param dinero entero que define el dinero que tiene una persona
      */
     public Publico(int dinero) {
@@ -83,7 +84,7 @@ public class Publico {
 
     /**
      * Permite obtener la edad de una persona
-     * @return número entero con la edad de una persona
+     * @return entero con la edad de una persona
      */
     public int getEdad() {
         return edad;
@@ -91,7 +92,7 @@ public class Publico {
 
     /**
      * Permite asignar la edad a una persona
-     * @param edad número entero con la edad de una persona
+     * @param edad entero con la edad de una persona
      */
     public void setEdad(int edad) {
         this.edad = edad;
@@ -99,7 +100,7 @@ public class Publico {
 
     /**
      * Permite obtener el dinero que tiene una persona
-     * @return número entero con el dinero que tiene una persona
+     * @return entero con el dinero que tiene una persona
      */
     public int getDinero() {
         return dinero;
@@ -107,7 +108,7 @@ public class Publico {
 
     /**
      * Permite asignar la cantidad de dinero que tiene una persona
-     * @param dinero número entero con la cantidad de dinero que tiene una persona
+     * @param dinero entero con la cantidad de dinero que tiene una persona
      */
     public void setDinero(int dinero) {
         this.dinero = dinero;
@@ -129,18 +130,20 @@ public class Publico {
 
     // Otros métodos
 
-    /*
-    TO-DO: Hay que implementar la lógica correctamente, es necesario pasar un parámetro que indique el precio de
-    la entrada y restar del dinero total de una persona el importe de dicha entrada
+    /**
+     * Obtiene el dinero restante de una persona cuando paga el precio de una entrada
+     * @param persona Objeto de la clase Publico: Representa una persona que paga la entrada de la función
+     * @param funcion Objeto de la clase Teatro: Función (Obra) que se representa en el teatro
+     * @return devuelve un entero con el dinero restante de una persona tras pagar el precio de la entrada
      */
-    public int pagarEntrada(Publico persona) {
-        int dineroRestante = 0; // Está mal
+    public int pagarEntrada(Publico persona, Teatro funcion) {
+        int dineroRestante = persona.getDinero() - funcion.getPrecio();
         return dineroRestante;
     }
 
     /**
      * Permite conocer si una persona es mayor de edad
-     * @param persona Objeto de la clase Teatrograma.Publico
+     * @param persona Objeto de la clase Publico: Persona que quiere acudir a una función
      * @return devuelve TRUE si la persona es mayor de edad y FALSE si no lo es
      */
     public boolean mayorEdad(Publico persona) {
@@ -148,11 +151,14 @@ public class Publico {
         return persona.getEdad() >= ADULTO;
     }
 
-    /*
-    TO-DO: Hace falta pasar por argumento el precio de una entrada e implementar la lógica correcta de la comprobación
+    /**
+     * Permite saber si el dinero que tiene una persona es suficiente para pagar el precio de una entrada
+     * @param persona Objeto de la clase Publico: Persona que quiere pagar una entrada
+     * @param funcion Ojeto de la clase Teatro: Función (Obra) que se representa en el teatro y de la que obtenemos el precio de la entrada
+     * @return devuelve TRUE si la persona tiene suficiente dinero para pagar la entrada, FALSE si no es suficiente
      */
-    public boolean tieneDinero(Publico persona) {
-        final int ENTRADA = 10;
+    public boolean tieneDinero(Publico persona, Teatro funcion) {
+        final int ENTRADA = funcion.getPrecio();
         return persona.getDinero() >= ENTRADA;
     }
 }

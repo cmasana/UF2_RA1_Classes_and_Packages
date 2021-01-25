@@ -3,7 +3,7 @@ package Teatrograma;
 import java.util.Arrays;
 
 /**
- * Clase Teatrograma.Teatro: Permite representar el propio teatro
+ * Clase Teatro: Permite representar el propio teatro
  */
 public class Teatro {
 
@@ -33,10 +33,10 @@ public class Teatro {
     // Constructores sobrecargados
 
     /**
-     * Permite crear un objeto de la clase Teatrograma.Teatro con 3 argumentos
-     * @param obra objeto de la clase Teatrograma.Obra que define la obra representada en el teatro
+     * Permite crear un objeto de la clase Teatro con 3 argumentos
+     * @param obra objeto de la clase Obra que define la obra representada en el teatro
      * @param precio entero con el precio de la obra de teatro
-     * @param sesion objeto de la clase Teatrograma.Asiento que define las butacas que hay para la obra de teatro
+     * @param sesion objeto de la clase Asiento que define las butacas que hay para la obra de teatro
      */
     public Teatro(Obra obra, int precio, Asiento[][] sesion) {
         this.obra = obra;
@@ -45,9 +45,9 @@ public class Teatro {
     }
 
     /**
-     * Permite crear un objeto de la clase Teatrograma.Teatro con 2 argumentos
-     * @param obra objeto de la clase Teatrograma.Obra que define la obra representada en el teatro
-     * @param sesion objeto de la clase Teatrograma.Asiento que define las butacas que hay para la obra de teatro
+     * Permite crear un objeto de la clase Teatro con 2 argumentos
+     * @param obra objeto de la clase Obra que define la obra representada en el teatro
+     * @param sesion objeto de la clase Asiento que define las butacas que hay para la obra de teatro
      */
     public Teatro(Obra obra, Asiento[][] sesion) {
         this.obra = obra;
@@ -59,7 +59,7 @@ public class Teatro {
 
     /**
      * Permite obtener la obra que se está representando en el teatro
-     * @return objeto de la clase Teatrograma.Obra que muestra los datos de una determinada obra
+     * @return objeto de la clase Obra que muestra los datos de una determinada obra
      */
     public Obra getObra() {
         return obra;
@@ -67,7 +67,7 @@ public class Teatro {
 
     /**
      * Permite asignar una obra al teatro
-     * @param obra objeto de la clase Teatrograma.Obra que muestra los datos de una determinada obra
+     * @param obra objeto de la clase Obra que muestra los datos de una determinada obra
      */
     public void setObra(Obra obra) {
         this.obra = obra;
@@ -91,7 +91,7 @@ public class Teatro {
 
     /**
      * Permite obtener las butacas de una determinada obra
-     * @return objeto de la clase Teatrograma.Asiento que muestra los datos de las butacas de la obra
+     * @return objeto de la clase Asiento que muestra los datos de las butacas de la obra
      */
     public Asiento[][] getSesion() {
         return sesion;
@@ -99,7 +99,7 @@ public class Teatro {
 
     /**
      * Permite asignar las butacas a una determinada obra
-     * @param sesion objeto de la clase Teatrograma.Asiento que muestra los datos de las butacas de la obra
+     * @param sesion objeto de la clase Asiento que muestra los datos de las butacas de la obra
      */
     public void setSesion(Asiento[][] sesion) {
         this.sesion = sesion;
@@ -122,21 +122,40 @@ public class Teatro {
 
     /**
      * Permite averiguar si la butaca introducida está disponible o no
-     * @param teatro objeto de la clase Teatrograma.Teatro
+     * @param funcion Objeto de la clase Teatro: Función (Obra) que se representa en el teatro
      * @return boolean TRUE Si la butaca está disponible, FALSE si está ocupada
      */
-    public boolean butacaDisponible(Teatro teatro) {
-        return teatro.getSesion() == null;
+    public boolean butacaDisponible(Teatro funcion) {
+        return funcion.getSesion() == null;
     }
 
-    /*public Teatrograma.Teatro asignarButaca() {
 
-        return Teatrograma.Teatro;
-    }*/
+    /**
+     * TO-DO - ME FALTA ALGO: DEVOLVER PERSONA O ASIENTO -> [X]
+     * @param persona
+     * @param sesion
+     */
+    public void asignarButaca(Publico persona, Teatro sesion) {
+        if (this.butacaDisponible(sesion)) {
 
-    // TO-DO: Persona tiene dinero? Es mayor de edad en obra para > 18?
-    /*public boolean puedeEntrar(Teatrograma.Teatro teatro, Teatrograma.Publico persona) {
-        if (persona.getDinero() >= this.getPrecio() && )
-        return false;
-    }*/
+        }
+    }
+
+
+    /**
+     * Permite averiguar si una persona puede asistir a una determinada función o no
+     * @param funcion Objeto de la clase Teatro: Función (Obra) que se representa en el teatro
+     * @param persona Objeto de la clase Publico: Persona que quiere asistir a una determinada función
+     * @param obra Objeto de la clase Obra: Obra que es representada en el teatro
+     * @return boolean TRUE si la persona cumple los requisitos para asistir y FALSE si no los cumple
+     */
+    public boolean puedeEntrar(Teatro funcion, Publico persona, Obra obra) {
+        if (obra.getMayorEdad() && !persona.mayorEdad(persona)) {
+            return false;
+        }
+        else if (!persona.tieneDinero(persona, funcion)) {
+            return false;
+        }
+        return true;
+    }
 }

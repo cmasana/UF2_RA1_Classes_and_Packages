@@ -32,10 +32,10 @@ public class Inicial {
 
 
     public Obra crearObra() {
-        String titulo = IO.enterString("Introduce un título:");
+        String titulo = IO.enterString("Introduce un título: ");
         int duracion = IO.enterInt("Introduce la duración (en minutos): ");
         String autor = IO.enterString("Introduce el autor: ");
-        String mayorEdad = IO.enterString("Esta obra es para mayores de edad?: ");
+        boolean mayorEdad = IO.enterBoolean("Esta obra es para mayores de edad? (Si / No): ");
 
         Obra obra = new Obra(titulo, duracion, autor, mayorEdad);
         return obra;

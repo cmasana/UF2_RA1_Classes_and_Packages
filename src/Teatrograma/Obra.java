@@ -1,7 +1,7 @@
 package Teatrograma;
 
 /**
- * Clase Teatrograma.Obra: Define cada una de las obras que se representan en el teatro actualmente
+ * Clase Obra: Define cada una de las obras que se representan en el teatro actualmente
  */
 public class Obra {
     // Atributos
@@ -24,7 +24,7 @@ public class Obra {
     /**
      * Permite identificar si la obra es para mayores de edad o no
      */
-    private String mayorEdad;
+    private boolean mayorEdad;
 
     // Constructor vacío
 
@@ -35,13 +35,13 @@ public class Obra {
     // Constructores sobrecargados
 
     /**
-     * Permite crear un objeto de la clase Teatrograma.Obra con 4 argumentos
+     * Permite crear un objeto de la clase Obra con 4 argumentos
      * @param titulo cadena de caracteres con el título de una obra
      * @param duracion entero que define la duración de una obra (en minutos)
      * @param autor cadena de caracteres con el nombre del autor de la obra
      * @param mayorEdad cadena de caracteres que define si una obra es para mayores de edad o no
      */
-    public Obra(String titulo, int duracion, String autor, String mayorEdad) {
+    public Obra(String titulo, int duracion, String autor, boolean mayorEdad) {
         this.titulo = titulo;
         this.duracion = duracion;
         this.autor = autor;
@@ -49,29 +49,18 @@ public class Obra {
     }
 
     /**
-     * Permite crear un objeto de la clase Teatrograma.Obra con 3 argumentos
+     * Permite crear un objeto de la clase Obra con 3 argumentos
      * @param titulo cadena de caracteres con el título de una obra
      * @param duracion entero que define la duración de una obra (en minutos)
-     * @param autor cadena de caracteres con el nombre del autor de la obra
+     * @param mayorEdad boolean TRUE si la obra es para mayores de edad y FALSE si no lo es
      */
-    public Obra(String titulo, int duracion, String autor) {
-        this.titulo = titulo;
-        this.duracion = duracion;
-        this.autor = autor;
-        this.mayorEdad = "Por determinar";
-    }
-
-    /**
-     * Permite crear un objeto de la clase Teatrograma.Obra con 2 argumentos
-     * @param titulo cadena de caracteres con el título de una obra
-     * @param duracion entero que define la duración de una obra (en minutos)
-     */
-    public Obra(String titulo, int duracion) {
+    public Obra(String titulo, int duracion, boolean mayorEdad) {
         this.titulo = titulo;
         this.duracion = duracion;
         this.autor = "Anónimo";
-        this.mayorEdad = "Por determinar";
+        this.mayorEdad = mayorEdad;
     }
+
 
     // Getters & Setters (Métodos de acceso)
 
@@ -125,17 +114,17 @@ public class Obra {
 
     /**
      * Permite obtener una cadena de caracteres que nos indica si una obra es para mayores de edad o no
-     * @return cadena de caracteres que indica si una obra es para mayores de edad o no
+     * @return boolean devuelve TRUE si la obra es para adultos y FALSE si no lo es
      */
-    public String getMayorEdad() {
+    public boolean getMayorEdad() {
         return mayorEdad;
     }
 
     /**
      * Permite asignar una cadena de caracteres que indica si la obra es para mayores de edad o no
-     * @param mayorEdad cadena de caracteres que indica si una obra es para mayores de edad o no
+     * @param mayorEdad boolean que indica si una obra es para mayores de edad o no
      */
-    public void setMayorEdad(String mayorEdad) {
+    public void setMayorEdad(boolean mayorEdad) {
         this.mayorEdad = mayorEdad;
     }
 
@@ -150,6 +139,7 @@ public class Obra {
         return  "Título: " + titulo + " | " +
                 "Duración: " + duracion + " min | " +
                 "Autor: " + autor + " | " +
-                "Mayores de Edad: " + mayorEdad;
+                "Clasificación por edades: " +
+                ((!mayorEdad) ? "Para todos los públicos" : "No recomendada para menores de 18 años");
     }
 }
