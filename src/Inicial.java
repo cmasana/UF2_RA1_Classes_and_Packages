@@ -2,6 +2,7 @@ import Auxiliar.IO;
 import Teatrograma.Asiento;
 import Teatrograma.Obra;
 import Teatrograma.Publico;
+import Teatrograma.Teatro;
 
 public class Inicial {
     /*
@@ -12,12 +13,17 @@ public class Inicial {
     private int contadorAsiento;
 
 
+    private final Asiento butaca = new Asiento();
+    private Teatro sala = new Teatro();
+
+
     /*
      * Arrays que Permiten almacenar los objetos de cada tipo
      */
     Publico personas[] = new Publico[10];
     Obra obras[] = new Obra[5];
-    Asiento butaca[] = new Asiento[20];
+    //Asiento [] butaca = new Asiento[20];
+    Teatro funcion[] = new Teatro[10];
 
 
 
@@ -27,6 +33,10 @@ public class Inicial {
     }
 
     public void inicio() {
+        sala.asignarButaca(butaca);
+    }
+
+    public void verButacas() {
 
     }
 

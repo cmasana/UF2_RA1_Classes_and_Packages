@@ -1,5 +1,7 @@
 package Teatrograma;
 
+import Auxiliar.IO;
+
 import java.util.Arrays;
 
 /**
@@ -20,9 +22,19 @@ public class Teatro {
     private int precio;
 
     /**
+     * Número máximo de filas en el teatro
+     */
+    private final int MAX_FILAS = 20;
+
+    /**
+     * Número máximo de butacas por cada fila
+     */
+    private final int MAX_NUM = 10;
+
+    /**
      * Butacas de la sesión
      */
-    private Asiento[][] sesion;
+    private Asiento[][] sesion = new Asiento[MAX_FILAS][MAX_NUM];
 
     // Constructor vacío
 
@@ -122,22 +134,30 @@ public class Teatro {
 
     /**
      * Permite averiguar si la butaca introducida está disponible o no
-     * @param funcion Objeto de la clase Teatro: Función (Obra) que se representa en el teatro
+     * @param fila entero que representa el número de fila de la sala
+     * @param numero entero que representa el número de butaca en cada una de las filas
      * @return boolean TRUE Si la butaca está disponible, FALSE si está ocupada
      */
-    public boolean butacaDisponible(Teatro funcion) {
-        return funcion.getSesion() == null;
+    public boolean butacaDisponible(int fila, int numero) {
+        return sesion[fila][numero] == null;
     }
 
 
     /**
-     * TO-DO - ME FALTA ALGO: DEVOLVER PERSONA O ASIENTO -> [X]
-     * @param persona
-     * @param sesion
+     * Permite asignar un Asiento (butaca) a una determinada persona
      */
-    public void asignarButaca(Publico persona, Teatro sesion) {
-        if (this.butacaDisponible(sesion)) {
+    public void asignarButaca(Asiento butaca) {
+        int fila = IO.enterInt("Introduce el nº de fila: ");
+        int numero = IO.enterInt("Introduce el nº de butaca: ");
+        Publico persona1 = new Publico("Carlos", 18, 2000);
 
+        if (this.butacaDisponible(fila, numero)) {
+            butaca.setFila(fila);
+            butaca.setNumero(numero);
+            butaca.setPersona(persona1);
+        }
+        else {
+            IO.printText("La butaca está ocupada");
         }
     }
 
