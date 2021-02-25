@@ -2,6 +2,9 @@ package GestionDatos;
 
 import Teatrograma.Teatro;
 
+/**
+ * Clase TeatroDB: Simula una bbdd, permite añadir y listar las funciones (o pases)
+ */
 public class TeatroDB {
     private final int MAX_FUNCIONES = 5; // Número máximo de Funciones (Representaciones) en el array
     private final Teatro[] listaFunciones; // Array que almacena Funciones
@@ -13,7 +16,7 @@ public class TeatroDB {
 
 
     /**
-     * Permite dar de alta una obra
+     * Permite dar de alta una función
      * @param funcion
      */
     public void addFuncion(Teatro funcion) {

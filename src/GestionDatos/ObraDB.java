@@ -2,6 +2,9 @@ package GestionDatos;
 
 import Teatrograma.Obra;
 
+/**
+ * Clase ObraDB: Simula una bbdd, permite añadir, listar y obtener obras del array
+ */
 public class ObraDB {
     private final int MAX_OBRAS = 5; // Número máximo de Obras en el array
     private final Obra[] listaObras; // Array que almacena Obras
