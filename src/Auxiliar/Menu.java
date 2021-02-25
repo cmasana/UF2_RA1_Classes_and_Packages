@@ -3,8 +3,8 @@ package Auxiliar;
 public class Menu {
     private final String[] MENUPRINCIPAL =
             {
-                    "Dar de alta",
-                    "Listar",
+                    "Registrar Obra",
+                    "Registrar Función",
                     "Modificar",
                     "Eliminar",
                     "Salir"

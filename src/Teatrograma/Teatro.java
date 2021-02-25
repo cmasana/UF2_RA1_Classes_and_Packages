@@ -36,13 +36,10 @@ public class Teatro {
      */
     private Asiento[][] sesion = new Asiento[MAX_FILAS][MAX_NUM];
 
-    // Constructor vacío
 
     public Teatro() {
 
     }
-
-    // Constructores sobrecargados
 
     /**
      * Permite crear un objeto de la clase Teatro con 3 argumentos
@@ -125,9 +122,8 @@ public class Teatro {
      */
     @Override
     public String toString() {
-        return "Teatrograma.Obra: " + obra + " | " +
-                "Precio: " + precio + " € | " +
-                "Sesión: " + Arrays.toString(sesion);
+        return "Obra: " + obra.getTitulo() + " | " +
+                "Precio: " + precio + " € ";
     }
 
     // Otros métodos

@@ -63,7 +63,7 @@ public class IO {
         System.out.println(mensaje);
 
         do {
-            texto = consola.nextLine().toLowerCase(); // Lo pasamos a minúsculas
+            texto = consola.nextLine();
         } while (texto.isEmpty());
 
         return texto;

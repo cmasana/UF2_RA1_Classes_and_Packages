@@ -1,35 +1,20 @@
 import Auxiliar.IO;
 import Auxiliar.Menu;
-import GestionDatos.ObrasDatabase;
+import GestionDatos.TeatroDB;
+import GestionDatos.ObraDB;
 import Teatrograma.Asiento;
 import Teatrograma.Obra;
 import Teatrograma.Publico;
 import Teatrograma.Teatro;
 
 public class Inicial {
-    /*
-     * Permite contabilizar el número de objetos creados de cada clase
-     */
-    private int contadorPersona;
-    private int contadorAsiento;
 
-
-    private final Asiento butaca = new Asiento();
-    private Teatro sala = new Teatro();
-
+    // Menu
     private final Menu MENU = new Menu();
 
     // Gestión de datos
-    private ObrasDatabase obrasDB = new ObrasDatabase();
-
-
-    /*
-     * Arrays que Permiten almacenar los objetos de cada tipo
-     */
-    Publico personas[] = new Publico[10];
-    //Asiento [] butaca = new Asiento[20];
-    Teatro funcion[] = new Teatro[10];
-
+    private final ObraDB OBRA = new ObraDB();
+    private final TeatroDB FUNCION = new TeatroDB();
 
 
     public static void main(String[] args) {
@@ -37,7 +22,7 @@ public class Inicial {
         programa.inicio();
     }
 
-    public void inicio() {
+    private void inicio() {
         boolean salir = false;
         do {
             IO.printText("GESTIÓN DEL TEATRO");
@@ -46,15 +31,16 @@ public class Inicial {
             int opcion = IO.enterInt("Escoge una opción: ");
             switch (opcion) {
                 case 1:
-                    // Crear
-                    obrasDB.altaObra();
+                    // Alta Obra
+                    crearObra();
                     break;
                 case 2:
-                    // Listar
-                    obrasDB.consultarObras();
+                    // Alta función
+                    crearFuncion();
                     break;
                 case 3:
                     // Modificar
+                    FUNCION.consultarFunciones();
                     break;
                 case 4:
                     // Eliminar
@@ -72,7 +58,49 @@ public class Inicial {
         //sala.asignarButaca(butaca);
     }
 
-    public void verButacas() {
+    private void verButacas() {
 
+    }
+
+    /**
+     * Permite crear una obra con los datos introducidos por el usuario
+     */
+    public void crearObra() {
+        Obra obra = new Obra();
+
+        String titulo = IO.enterString("Introduce un título: ");
+        int duracion = IO.enterInt("Introduce la duración (en minutos): ");
+        String autor = IO.enterString("Introduce el autor: ");
+        boolean mayorEdad = IO.enterBoolean("Esta obra es para mayores de edad? (Si / No): ");
+
+        obra.setTitulo(titulo);
+        obra.setDuracion(duracion);
+        obra.setAutor(autor);
+        obra.setMayorEdad(mayorEdad);
+
+        OBRA.addObra(obra);
+    }
+
+    private void crearFuncion() {
+        Teatro funcion = new Teatro();
+
+        int posicion; // Almacena posicion de una Obra en su array
+        int precio; // Almacena precio de la entrada
+
+        // Mostramos el listado con las Obras creadas
+        OBRA.consultarObras();
+
+        // Capturamos selección del usuario
+        posicion = IO.enterInt("Selecciona una Obra: ") - 1;
+
+        // Capturamos precio de la entrada
+        precio = IO.enterInt("Introduce el precio de la entrada: ");
+
+        // Creamos objeto
+        funcion.setObra(OBRA.seleccionarObra(posicion));
+        funcion.setPrecio(precio);
+        funcion.setSesion(funcion.getSesion());
+
+        FUNCION.addFuncion(funcion);
     }
 }
