@@ -4,8 +4,8 @@ public class Menu {
     private final String[] MENUPRINCIPAL =
             {
                     "Registrar Obra",
-                    "Registrar Función",
-                    "Modificar",
+                    "Registrar Sala",
+                    "Registrar Persona",
                     "Eliminar",
                     "Salir"
             };
