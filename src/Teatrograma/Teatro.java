@@ -133,6 +133,7 @@ public class Teatro {
      * Permite asignar un Asiento (butaca) a una determinada persona
      * @param persona objeto de la clase Publico que almacena una persona
      * @param obra objeto de la clase Obra que almacena la obra que se va a representar en el teatro
+     * @return boolean devuelve TRUE si la butaca ha sido asignada, FALSE si no se ha podido asignar
      */
     public boolean asignarButaca(Publico persona, Obra obra) {
         /*
