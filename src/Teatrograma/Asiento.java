@@ -118,12 +118,14 @@ public class Asiento {
     // Otros métodos
 
     /**
-     * Permite conocer el estado de una butaca
-     * @param butaca objeto de la clase Asiento con los datos de una determinada butaca
+     * Permite conocer si una butaca está ocupada o no
+     * @param listaButacas array de tipo Asiento que almacena las butacas de la sala de teatro
+     * @param fila entero que almacena la fila de butacas
+     * @param numButaca entero que almacena el número de butaca de una determinada fila
      * @return devuelve TRUE si la butaca está ocupada y FALSE si no lo está
      */
-    public boolean estaOcupado(Asiento butaca) {
-        // Si la butaca tiene una persona asignada devuelve TRUE
-        return butaca.getPersona() != null;
+    public boolean estaOcupado(Asiento[][] listaButacas, int fila, int numButaca) {
+        // Devuelve TRUE si hay un objeto almacenado en una posición determinada
+        return listaButacas[fila][numButaca] != null;
     }
 }

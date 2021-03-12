@@ -49,7 +49,7 @@ public class Publico {
      * @param dinero entero que define el dinero que tiene una persona
      */
     public Publico(int edad, int dinero) {
-        this.nombre = "anonim";
+        this.nombre = "anonimo";
         this.edad = edad;
         this.dinero = dinero;
     }
@@ -59,7 +59,7 @@ public class Publico {
      * @param dinero entero que define el dinero que tiene una persona
      */
     public Publico(int dinero) {
-        this.nombre = "anonim";
+        this.nombre = "anonimo";
         this.edad = 99;
         this.dinero = dinero;
     }

@@ -6,7 +6,7 @@ public class Menu {
                     "Registrar Obra",
                     "Registrar Sala",
                     "Registrar Persona",
-                    "Eliminar",
+                    "Asignar Butaca",
                     "Salir"
             };
 

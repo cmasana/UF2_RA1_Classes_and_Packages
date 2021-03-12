@@ -2,8 +2,6 @@ package Teatrograma;
 
 import Auxiliar.IO;
 
-import java.util.Arrays;
-
 /**
  * Clase Teatro: Permite representar el propio teatro
  */
@@ -24,21 +22,21 @@ public class Teatro {
     /**
      * Butacas de la sesión
      */
-    private Asiento[][] sesion;
+    private final Asiento[][] SESION;
 
     /**
      * Filas máximas del teatro
      */
-    private final int MAX_FILAS = 10;
+    private final int MAX_FILAS = 5;
 
     /**
      * Butacas maximas por cada fila
      */
-    private final int MAX_BUTACAS = 5;
+    private final int MAX_BUTACAS = 2;
 
 
     public Teatro() {
-
+        this.SESION = new Asiento[MAX_FILAS][MAX_BUTACAS];
     }
 
     /**
@@ -49,7 +47,7 @@ public class Teatro {
     public Teatro(Obra obra, int precio) {
         this.obra = obra;
         this.precio = precio;
-        this.sesion = new Asiento[MAX_FILAS][MAX_BUTACAS];
+        this.SESION = new Asiento[MAX_FILAS][MAX_BUTACAS];
     }
 
     /**
@@ -59,7 +57,7 @@ public class Teatro {
     public Teatro(Obra obra) {
         this.obra = obra;
         this.precio = 0;
-        this.sesion = new Asiento[MAX_FILAS][MAX_BUTACAS];
+        this.SESION = new Asiento[MAX_FILAS][MAX_BUTACAS];
     }
 
     // Getters & Setters
@@ -100,18 +98,9 @@ public class Teatro {
      * Permite obtener las butacas de una determinada obra
      * @return objeto de la clase Asiento que muestra los datos de las butacas de la obra
      */
-    public Asiento[][] getSesion() {
-        return sesion;
+    public Asiento[][] getSESION() {
+        return SESION;
     }
-
-    /**
-     * Permite asignar las butacas a una determinada obra
-     * @param sesion objeto de la clase Asiento que muestra los datos de las butacas de la obra
-     */
-    public void setSesion(Asiento[][] sesion) {
-        this.sesion = sesion;
-    }
-
 
     // Método toString
 
@@ -134,22 +123,40 @@ public class Teatro {
      * @return boolean TRUE Si la butaca está disponible, FALSE si está ocupada
      */
     public boolean butacaDisponible(int fila, int numero) {
-        return sesion[fila][numero] == null;
+        return this.SESION[fila][numero] == null;
     }
-
 
     /**
      * Permite asignar un Asiento (butaca) a una determinada persona
+     * @param butaca objeto de la clase Asiento que almacena la fila, el num de butaca y la persona
+     * @param persona objeto de la clase Publico que almacena una persona
+     * @param obra objeto de la clase Obra que almacena la obra que se va a representar en el teatro
      */
-    public void asignarButaca(Asiento sesion, Publico persona, Teatro sala, Obra obra) {
+    public void asignarButaca(Asiento butaca, Publico persona, Obra obra) {
+        if (this.puedeEntrar(this, persona, obra)) {
+            if ()
+        }
+        /*
+        Capturamos fila y num de butaca
+         */
         int fila = IO.enterInt("Introduce el nº de fila: ");
         int numero = IO.enterInt("Introduce el nº de butaca: ");
 
+        /*
+        Comprobamos que la fila y el num de butaca están disponibles
+         */
         if (this.butacaDisponible(fila, numero)) {
-            sesion.setFila(fila);
-            sesion.setNumero(numero);
-            if (this.puedeEntrar(sala, persona, obra)) {
-                sesion.setPersona(persona);
+            butaca.setFila(fila);
+            butaca.setNumero(numero);
+            /*
+            Si están disponibles, comprobamos que la persona cumple los requisitos para entrar
+             */
+            if (this.puedeEntrar(this, persona, obra)) {
+                butaca.setPersona(persona);
+                /*
+                Asignamos el objeto butaca al array bidimensional con la plantilla de butacas
+                 */
+                this.SESION[fila][numero] = butaca;
             }
             else {
                 IO.printText("La persona no cumple los requisitos para entrar");
@@ -169,12 +176,24 @@ public class Teatro {
      * @return boolean TRUE si la persona cumple los requisitos para asistir y FALSE si no los cumple
      */
     public boolean puedeEntrar(Teatro sala, Publico persona, Obra obra) {
+        /*
+        Si la obra es para mayores de 18 y la persona es menor de edad no puede entrar
+         */
         if (obra.getMayorEdad() && !persona.mayorEdad(persona)) {
             return false;
         }
+
+        /*
+        En el caso de que la persona sea mayor de edad, comprobamos que tenga dinero suficiente
+        para pagar la entrada
+         */
         else if (!persona.tieneDinero(persona, sala)) {
             return false;
         }
+
+        /*
+        Devolvemos TRUE si la persona cumple con todos los requisitos
+         */
         return true;
     }
 }

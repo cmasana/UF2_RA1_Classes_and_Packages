@@ -1,7 +1,6 @@
 import Auxiliar.IO;
 import Auxiliar.Menu;
-import GestionDatos.Inicial;
-import Teatrograma.Teatro;
+import Inicial.Inicial;
 
 public class Main {
 
@@ -17,6 +16,9 @@ public class Main {
         programa.inicio();
     }
 
+    /**
+     * Muestra un menú con las opciones para gestionar nuestro Teatro
+     */
     private void inicio() {
         boolean salir = false;
         do {
@@ -28,7 +30,7 @@ public class Main {
                 case 1:
                     // Alta Obra
                     INICIAL.crearObra();
-                    INICIAL.consultarObras();
+                    INICIAL.consultarObra();
                     break;
                 case 2:
                     // Alta Sala
@@ -38,10 +40,12 @@ public class Main {
                 case 3:
                     // Alta Persona
                     INICIAL.crearPersona();
-                    INICIAL.consultarUsuarios();
+                    INICIAL.consultarPersonas();
                     break;
                 case 4:
-                    // Eliminar
+                    // Asignar butaca
+                    INICIAL.asignarUsuario();
+                    INICIAL.verButacas();
                     break;
                 case 5:
                     // Salir
@@ -52,12 +56,5 @@ public class Main {
                     break;
             }
         } while (!salir);
-
-        //sala.asignarButaca(butaca);
     }
-
-    private void verButacas() {
-
-    }
-
 }

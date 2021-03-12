@@ -22,12 +22,21 @@ public class IO {
 
 
     /**
-     * Muestra por pantalla un determinado mensaje
+     * Muestra por pantalla un determinado mensaje con salto de línea
      *
      * @param mensaje texto que queremos mostrar por pantalla
      */
     public static void printText(String mensaje) {
         System.out.println(mensaje);
+    }
+
+    /**
+     * Muestra por pantalla un determinado mensaje sin salto de línea
+     *
+     * @param mensaje texto que queremos mostrar por pantalla
+     */
+    public static void printTextNotLine(String mensaje) {
+        System.out.print(mensaje);
     }
 
     /**
