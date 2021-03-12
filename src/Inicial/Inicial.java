@@ -1,25 +1,36 @@
 package Inicial;
 
-import Auxiliar.IO;
-import Teatrograma.Asiento;
-import Teatrograma.Obra;
-import Teatrograma.Publico;
-import Teatrograma.Teatro;
+import Auxiliar.*;
 
+import Teatrograma.*;
+
+/**
+ * Clase Inicial: Contiene los objetos y métodos necesarios para la ejecución del programa
+ */
 public class Inicial {
     // Instancias de objetos
     private final Obra OBRA = new Obra();
     private final Teatro SALA = new Teatro();
     private final Asiento BUTACA = new Asiento();
 
+    // Constante para mejor experiencia de usuario
+    private final int UNO = 1;
+
     // Array que almacena personas
     private final int MAX_PERSONAS = 5;
-    private final Publico[] LISTAPERSONAS = new Publico[MAX_PERSONAS];
+    private Publico[] LISTAPERSONAS = new Publico[MAX_PERSONAS];
     private int contadorPersonas;
 
 
     public Inicial() {
+        // Activar SOLO para pruebas
+        OBRA.setTitulo("El Rey León, el musical");
+        OBRA.setDuracion(285);
+        OBRA.setAutor("Roger Allers & Irene Mecchi");
+        OBRA.setMayorEdad(false);
 
+        SALA.setObra(OBRA);
+        SALA.setPrecio(23);
     }
 
     /**
@@ -112,15 +123,36 @@ public class Inicial {
     }
 
     /**
+     * Permite eliminar una persona del array de lista de personas
+     * @param posicion entero con la posición de la persona en el array
+     * @return devuelve un array de tipo Publico actualizado
+     */
+    public Publico[] eliminarPersona(int posicion) {
+        LISTAPERSONAS[posicion] = null;
+        this.contadorPersonas--;
+
+        return LISTAPERSONAS;
+    }
+
+    /**
      * Permite asignar un usuario de la lista de usuarios a una determinada butaca
      */
     public void asignarUsuario() {
-        this.consultarPersonas(); // Listado de usuarios
+        if (this.contadorPersonas != 0) {
+            this.consultarPersonas(); // Listado de usuarios
 
-        int posicion = IO.enterInt("Selecciona una Persona: ") - 1;
-        Publico persona = this.seleccionarPersona(posicion);
+            int posicion = IO.enterInt("Selecciona una Persona: ") - UNO;
+            Publico persona = this.seleccionarPersona(posicion);
 
-        SALA.asignarButaca(BUTACA, persona, SALA.getObra());
+            SALA.asignarButaca(persona, SALA.getObra());
+
+            /*
+            Eliminamos la persona del array de personas después de haber sido asignado a una butaca
+             */
+            LISTAPERSONAS = this.eliminarPersona(posicion);
+        } else {
+            IO.printText("No existe ningún usuario");
+        }
     }
 
     /**
@@ -138,5 +170,53 @@ public class Inicial {
             }
             IO.printText(" ");
         }
+    }
+
+    /**
+     * Muestra los espectadores que han entrado a la obra
+     */
+    public void verEspectadores() {
+        for (int fila = 0; fila < SALA.getSESION().length; fila++) {
+            for (int numButaca = 0; numButaca < SALA.getSESION()[fila].length; numButaca++) {
+                if (BUTACA.estaOcupado(SALA.getSESION(), fila, numButaca)){
+                    IO.printText(SALA.getSESION()[fila][numButaca].getPersona().toString()
+                            + " | Fila: " + (fila + UNO)
+                            + " Butaca: " + (numButaca + UNO));
+                }
+            }
+        }
+    }
+
+    /**
+     * Muestra un menú con 2 opciones para listar información relevante del teatro
+     */
+    public void listarTeatro() {
+        // Menú secundario
+        final Menu MENU = new Menu();
+
+        boolean salir = false;
+        do {
+            IO.printText("LISTAR TEATRO");
+            // Print menu
+            IO.printMenu(MENU.getMENUSECUNDARIO());
+            int opcion = IO.enterInt("Escoge una opción: ");
+            switch (opcion) {
+                case 1:
+                    // Ver sala de butacas de manera visual
+                    this.verButacas();
+                    break;
+                case 2:
+                    // Ver usuarios con sus correspondientes butacas
+                    this.verEspectadores();
+                    break;
+                case 3:
+                    // Salir
+                    salir = true;
+                    break;
+                default:
+                    IO.printText("Opción incorrecta \n");
+                    break;
+            }
+        } while (!salir);
     }
 }

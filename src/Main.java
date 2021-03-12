@@ -45,9 +45,12 @@ public class Main {
                 case 4:
                     // Asignar butaca
                     INICIAL.asignarUsuario();
-                    INICIAL.verButacas();
                     break;
                 case 5:
+                    // Menú listado del teatro
+                    INICIAL.listarTeatro();
+                    break;
+                case 6:
                     // Salir
                     salir = true;
                     break;

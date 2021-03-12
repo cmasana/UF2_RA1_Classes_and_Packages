@@ -138,8 +138,8 @@ public class Obra {
     public String toString() {
         return  "Título: " + titulo + " | " +
                 "Duración: " + duracion + " min | " +
-                "Autor: " + autor + " | " +
+                "Libreto de: " + autor + " | " +
                 "Clasificación por edades: " +
-                ((!mayorEdad) ? "Para todos los públicos" : "No recomendada para menores de 18 años") + "\n";
+                ((!mayorEdad) ? "Para todos los públicos" : "No recomendada para menores de 18 años");
     }
 }

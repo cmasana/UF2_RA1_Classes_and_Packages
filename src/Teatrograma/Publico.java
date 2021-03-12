@@ -125,19 +125,18 @@ public class Publico {
     public String toString() {
         return  "Nombre: " + nombre + " | " +
                 "Edad: " + edad + " | " +
-                "Dinero: " + dinero + " € \n";
+                "Dinero: " + dinero + " €";
     }
 
     // Otros métodos
 
     /**
      * Obtiene el dinero restante de una persona cuando paga el precio de una entrada
-     * @param persona Objeto de la clase Publico: Representa una persona que paga la entrada de la función
      * @param funcion Objeto de la clase Teatro: Función (Obra) que se representa en el teatro
      * @return devuelve un entero con el dinero restante de una persona tras pagar el precio de la entrada
      */
-    public int pagarEntrada(Publico persona, Teatro funcion) {
-        int dineroRestante = persona.getDinero() - funcion.getPrecio();
+    public int pagarEntrada(Teatro funcion) {
+        int dineroRestante = this.getDinero() - funcion.getPrecio();
         return dineroRestante;
     }
 
