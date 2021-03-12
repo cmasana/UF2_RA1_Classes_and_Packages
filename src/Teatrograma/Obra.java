@@ -140,6 +140,6 @@ public class Obra {
                 "Duración: " + duracion + " min | " +
                 "Autor: " + autor + " | " +
                 "Clasificación por edades: " +
-                ((!mayorEdad) ? "Para todos los públicos" : "No recomendada para menores de 18 años");
+                ((!mayorEdad) ? "Para todos los públicos" : "No recomendada para menores de 18 años") + "\n";
     }
 }

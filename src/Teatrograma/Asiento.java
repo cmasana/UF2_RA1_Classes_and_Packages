@@ -112,7 +112,7 @@ public class Asiento {
     public String toString() {
         return "Fila: " + fila + " | " +
                 "Número: " + numero + " | " +
-                "Persona: " + persona;
+                "Persona: " + persona + "\n";
     }
 
     // Otros métodos

@@ -125,7 +125,7 @@ public class Publico {
     public String toString() {
         return  "Nombre: " + nombre + " | " +
                 "Edad: " + edad + " | " +
-                "Dinero: " + dinero + " €";
+                "Dinero: " + dinero + " € \n";
     }
 
     // Otros métodos

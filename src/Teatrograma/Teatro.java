@@ -111,7 +111,7 @@ public class Teatro {
     @Override
     public String toString() {
         return "Obra: " + obra.getTitulo() + " | " +
-                "Precio: " + precio + " € ";
+                "Precio: " + precio + " € \n";
     }
 
     // Otros métodos
@@ -133,37 +133,33 @@ public class Teatro {
      * @param obra objeto de la clase Obra que almacena la obra que se va a representar en el teatro
      */
     public void asignarButaca(Asiento butaca, Publico persona, Obra obra) {
+        /*
+        Comprobamos que la persona cumple los requisitos para entrar
+         */
         if (this.puedeEntrar(this, persona, obra)) {
-            if ()
-        }
-        /*
-        Capturamos fila y num de butaca
-         */
-        int fila = IO.enterInt("Introduce el nº de fila: ");
-        int numero = IO.enterInt("Introduce el nº de butaca: ");
-
-        /*
-        Comprobamos que la fila y el num de butaca están disponibles
-         */
-        if (this.butacaDisponible(fila, numero)) {
-            butaca.setFila(fila);
-            butaca.setNumero(numero);
             /*
-            Si están disponibles, comprobamos que la persona cumple los requisitos para entrar
+            Capturamos fila y num de butaca
              */
-            if (this.puedeEntrar(this, persona, obra)) {
+            int fila = IO.enterInt("Introduce el nº de fila: ");
+            int numero = IO.enterInt("Introduce el nº de butaca: ");
+
+            /*
+            Comprobamos que la fila y el num de butaca están disponibles
+             */
+            if (this.butacaDisponible(fila, numero)) {
+                butaca.setFila(fila);
+                butaca.setNumero(numero);
                 butaca.setPersona(persona);
+
                 /*
                 Asignamos el objeto butaca al array bidimensional con la plantilla de butacas
                  */
                 this.SESION[fila][numero] = butaca;
+            } else {
+                IO.printText("La butaca está ocupada \n");
             }
-            else {
-                IO.printText("La persona no cumple los requisitos para entrar");
-            }
-        }
-        else {
-            IO.printText("La butaca está ocupada");
+        } else {
+            IO.printText("La persona no cumple los requisitos para entrar \n");
         }
     }
 
