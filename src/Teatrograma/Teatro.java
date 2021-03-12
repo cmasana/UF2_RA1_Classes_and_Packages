@@ -2,8 +2,6 @@ package Teatrograma;
 
 import Auxiliar.IO;
 
-import java.util.Arrays;
-
 /**
  * Clase Teatro: Permite representar el propio teatro
  */
@@ -136,7 +134,7 @@ public class Teatro {
      * @param persona objeto de la clase Publico que almacena una persona
      * @param obra objeto de la clase Obra que almacena la obra que se va a representar en el teatro
      */
-    public void asignarButaca(Publico persona, Obra obra) {
+    public boolean asignarButaca(Publico persona, Obra obra) {
         /*
         Comprobamos que la persona cumple los requisitos para entrar
          */
@@ -147,25 +145,33 @@ public class Teatro {
             int fila = IO.enterInt("Introduce el nº de fila (1 - " + MAX_FILAS + "): ") - 1;
             int numero = IO.enterInt("Introduce el nº de butaca (1 - " + MAX_BUTACAS + "): ") - 1;
 
-            /*
-            Comprobamos que la fila y el num de butaca están disponibles
-             */
-            if (this.butacaDisponible(fila, numero)) {
-                /*
-                Asignamos al objeto persona una nueva cantidad de dinero tras pagar la entrada
-                 */
-                persona.setDinero(persona.pagarEntrada(this));
-                /*
-                Asignamos objeto de tipo Asiento al array bidimensional con la plantilla de butacas
-                 */
-                this.SESION[fila][numero] = new Asiento(fila, numero, persona);
-
+            if (fila >= MAX_FILAS || numero >= MAX_BUTACAS) {
+                IO.printText("Los datos introducidos no son correctos");
             } else {
-                IO.printText("La butaca está ocupada \n");
+                /*
+                Comprobamos que la fila y el num de butaca están disponibles
+                 */
+                if (this.butacaDisponible(fila, numero)) {
+                    /*
+                    Asignamos al objeto persona una nueva cantidad de dinero tras pagar la entrada
+                     */
+                    persona.setDinero(persona.pagarEntrada(this));
+                    /*
+                    Asignamos objeto de tipo Asiento al array bidimensional con la plantilla de butacas
+                     */
+                    this.SESION[fila][numero] = new Asiento(fila, numero, persona);
+
+                    return true;
+
+                } else {
+                    IO.printText("La butaca está ocupada \n");
+                }
             }
         } else {
             IO.printText("La persona no cumple los requisitos para entrar \n");
         }
+
+        return false;
     }
 
 

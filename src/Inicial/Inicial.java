@@ -138,18 +138,22 @@ public class Inicial {
      * Permite asignar un usuario de la lista de usuarios a una determinada butaca
      */
     public void asignarUsuario() {
+        boolean asignado = false;
+
         if (this.contadorPersonas != 0) {
             this.consultarPersonas(); // Listado de usuarios
 
             int posicion = IO.enterInt("Selecciona una Persona: ") - UNO;
             Publico persona = this.seleccionarPersona(posicion);
 
-            SALA.asignarButaca(persona, SALA.getObra());
+            asignado = SALA.asignarButaca(persona, SALA.getObra());
 
-            /*
-            Eliminamos la persona del array de personas después de haber sido asignado a una butaca
-             */
-            LISTAPERSONAS = this.eliminarPersona(posicion);
+            if(asignado) {
+                /*
+                Eliminamos la persona del array de personas después de haber sido asignado a una butaca
+                 */
+                LISTAPERSONAS = this.eliminarPersona(posicion);
+            }
         } else {
             IO.printText("No existe ningún usuario");
         }
