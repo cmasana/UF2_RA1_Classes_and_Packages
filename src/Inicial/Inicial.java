@@ -1,7 +1,6 @@
 package Inicial;
 
 import Auxiliar.*;
-
 import Teatrograma.*;
 
 /**
@@ -138,7 +137,7 @@ public class Inicial {
      * Permite asignar un usuario de la lista de usuarios a una determinada butaca
      */
     public void asignarUsuario() {
-        boolean asignado = false;
+        boolean asignado;
 
         if (this.contadorPersonas != 0) {
             this.consultarPersonas(); // Listado de usuarios
