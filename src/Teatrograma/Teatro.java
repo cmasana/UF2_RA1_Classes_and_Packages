@@ -139,7 +139,7 @@ public class Teatro {
         /*
         Comprobamos que la persona cumple los requisitos para entrar
          */
-        if (this.puedeEntrar(this, persona, obra)) {
+        if (this.puedeEntrar(persona, obra)) {
             /*
             Capturamos fila y num de butaca
              */
@@ -178,16 +178,15 @@ public class Teatro {
 
     /**
      * Permite averiguar si una persona puede asistir a una determinada función o no
-     * @param sala Objeto de la clase Teatro: Función (Obra) que se representa en el teatro
      * @param persona Objeto de la clase Publico: Persona que quiere asistir a una determinada función
      * @param obra Objeto de la clase Obra: Obra que es representada en el teatro
      * @return boolean TRUE si la persona cumple los requisitos para asistir y FALSE si no los cumple
      */
-    public boolean puedeEntrar(Teatro sala, Publico persona, Obra obra) {
+    public boolean puedeEntrar(Publico persona, Obra obra) {
         /*
         Si la obra es para mayores de 18 y la persona es menor de edad no puede entrar
          */
-        if (obra.getMayorEdad() && !persona.mayorEdad(persona)) {
+        if (obra.getMayorEdad() && !persona.mayorEdad()) {
             return false;
         }
 
@@ -195,7 +194,7 @@ public class Teatro {
         En el caso de que la persona sea mayor de edad, comprobamos que tenga dinero suficiente
         para pagar la entrada
          */
-        else if (!persona.tieneDinero(persona, sala)) {
+        else if (!persona.tieneDinero(this)) {
             return false;
         }
 

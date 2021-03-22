@@ -142,22 +142,20 @@ public class Publico {
 
     /**
      * Permite conocer si una persona es mayor de edad
-     * @param persona Objeto de la clase Publico: Persona que quiere acudir a una función
      * @return devuelve TRUE si la persona es mayor de edad y FALSE si no lo es
      */
-    public boolean mayorEdad(Publico persona) {
+    public boolean mayorEdad() {
         final int ADULTO = 18;
-        return persona.getEdad() >= ADULTO;
+        return this.edad >= ADULTO;
     }
 
     /**
      * Permite saber si el dinero que tiene una persona es suficiente para pagar el precio de una entrada
-     * @param persona Objeto de la clase Publico: Persona que quiere pagar una entrada
      * @param funcion Ojeto de la clase Teatro: Función (Obra) que se representa en el teatro y de la que obtenemos el precio de la entrada
      * @return devuelve TRUE si la persona tiene suficiente dinero para pagar la entrada, FALSE si no es suficiente
      */
-    public boolean tieneDinero(Publico persona, Teatro funcion) {
+    public boolean tieneDinero(Teatro funcion) {
         final int ENTRADA = funcion.getPrecio();
-        return persona.getDinero() >= ENTRADA;
+        return this.dinero >= ENTRADA;
     }
 }
