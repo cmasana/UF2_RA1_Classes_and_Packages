@@ -26,7 +26,7 @@ public class Inicial {
         OBRA.setTitulo("El Rey León, el musical");
         OBRA.setDuracion(285);
         OBRA.setAutor("Roger Allers & Irene Mecchi");
-        OBRA.setMayorEdad(false);
+        OBRA.setMayorEdad(true);
 
         SALA.setObra(OBRA);
         SALA.setPrecio(23);

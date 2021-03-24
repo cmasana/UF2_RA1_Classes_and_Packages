@@ -131,13 +131,19 @@ public class Publico {
     // Otros métodos
 
     /**
-     * Obtiene el dinero restante de una persona cuando paga el precio de una entrada
+     * Permite averiguar si una persona tiene dinero suficiente para pagar la entrada de una función
      * @param funcion Objeto de la clase Teatro: Función (Obra) que se representa en el teatro
-     * @return devuelve un entero con el dinero restante de una persona tras pagar el precio de la entrada
+     * @return devuelve un boolean TRUE si puede pagar o FALSE si no puede
      */
-    public int pagarEntrada(Teatro funcion) {
-        int dineroRestante = this.dinero - funcion.getPrecio();
-        return dineroRestante;
+    public boolean pagarEntrada(Teatro funcion) {
+        boolean seLoPuedePermitir = false;
+
+        if (tieneDinero(funcion)) {
+            seLoPuedePermitir = true;
+            this.dinero = this.dinero - funcion.getPrecio();
+        }
+
+        return seLoPuedePermitir;
     }
 
     /**
