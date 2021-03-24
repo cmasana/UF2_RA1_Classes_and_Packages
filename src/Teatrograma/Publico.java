@@ -136,7 +136,7 @@ public class Publico {
      * @return devuelve un entero con el dinero restante de una persona tras pagar el precio de la entrada
      */
     public int pagarEntrada(Teatro funcion) {
-        int dineroRestante = this.getDinero() - funcion.getPrecio();
+        int dineroRestante = this.dinero - funcion.getPrecio();
         return dineroRestante;
     }
 
