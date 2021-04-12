@@ -16,8 +16,8 @@ public class Inicial {
     private final int UNO = 1;
 
     // Array que almacena personas
-    private final int MAX_PERSONAS = 5;
-    private Publico[] LISTAPERSONAS = new Publico[MAX_PERSONAS];
+    private final int MAX_PERSONAS = SALA.getMAX_BUTACAS() * SALA.getMAX_FILAS();
+    private final Publico[] LISTAPERSONAS = new Publico[MAX_PERSONAS];
     private int contadorPersonas;
 
 
@@ -124,13 +124,13 @@ public class Inicial {
     /**
      * Permite eliminar una persona del array de lista de personas
      * @param posicion entero con la posición de la persona en el array
-     * @return devuelve un array de tipo Publico actualizado
      */
-    public Publico[] eliminarPersona(int posicion) {
-        LISTAPERSONAS[posicion] = null;
+    public void eliminarPersona(int posicion) {
+        for (int i = posicion; i < (MAX_PERSONAS - 1); i++){
+            LISTAPERSONAS[i] = LISTAPERSONAS[i + 1];
+        }
+        LISTAPERSONAS[MAX_PERSONAS - 1] = null;
         this.contadorPersonas--;
-
-        return LISTAPERSONAS;
     }
 
     /**
@@ -151,7 +151,7 @@ public class Inicial {
                 /*
                 Eliminamos la persona del array de personas después de haber sido asignado a una butaca
                  */
-                LISTAPERSONAS = this.eliminarPersona(posicion);
+                this.eliminarPersona(posicion);
             }
         } else {
             IO.printText("No existe ningún usuario");

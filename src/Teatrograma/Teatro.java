@@ -209,4 +209,14 @@ public class Teatro {
          */
         return true;
     }
+
+    // Getters
+
+    public int getMAX_FILAS() {
+        return MAX_FILAS;
+    }
+
+    public int getMAX_BUTACAS() {
+        return MAX_BUTACAS;
+    }
 }
